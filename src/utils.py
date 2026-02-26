@@ -1,19 +1,39 @@
 """Funcoes utilitarias: predicao, explicacao, score de risco."""
 import pandas as pd
+import numpy as np
 import logging
 
 logger = logging.getLogger("passos_magicos.utils")
 
+# Colunas de entrada do modelo (sem features de leakage: idade, fase, ian)
+_MODEL_INPUT_COLS = [
+    "inde", "iaa", "ieg", "ips", "ida", "ipv",
+    "matem", "portug", "genero", "pedra_22",
+    "ano_ingresso", "cg", "cf", "ct", "n_av",
+]
+
+
+def _build_model_input(features: dict) -> pd.DataFrame:
+    """Constroi DataFrame com as features que o pipeline espera.
+
+    Features de leakage (idade, fase, ian) sao excluidas.
+    Features nao fornecidas sao preenchidas com NaN para o imputer tratar.
+    """
+    row = {}
+    for col in _MODEL_INPUT_COLS:
+        row[col] = features.get(col, np.nan)
+    return pd.DataFrame([row])
+
 
 def predict_risk(model, features: dict) -> int:
     """Prediz risco usando o pipeline completo."""
-    df = pd.DataFrame([features])
+    df = _build_model_input(features)
     return int(model.predict(df)[0])
 
 
 def prediction_confidence(model, features: dict) -> float:
     """Retorna probabilidade da classe positiva (risco) em porcentagem."""
-    df = pd.DataFrame([features])
+    df = _build_model_input(features)
     proba = model.predict_proba(df)[0][1]
     return round(proba * 100, 2)
 
