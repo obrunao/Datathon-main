@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs cat)",
+      "Bash(python3:*)",
+      "Bash(python -c \"import pandas as pd; df = pd.read_excel\\(r''C:\\\\Users\\\\Bruno\\\\Desktop\\\\datathon-passos-magicos\\\\data\\\\raw\\\\BASE_DE_DADOS_PEDE_2024_DATATHON.xlsx''\\); print\\(''SHAPE:'', df.shape\\); print\\(''\\\\nCOLUMNS:'', list\\(df.columns\\)\\); print\\(''\\\\nDTYPES:''\\); print\\(df.dtypes\\); print\\(''\\\\nHEAD:''\\); print\\(df.head\\(3\\).to_string\\(\\)\\); print\\(''\\\\nNULLS:''\\); print\\(df.isnull\\(\\).sum\\(\\)\\); print\\(''\\\\nDESCRIBE:''\\); print\\(df.describe\\(\\).to_string\\(\\)\\)\")",
+      "Bash(pip install openpyxl)",
+      "Bash(pip install -r requirements.txt)",
+      "Bash(pip install pandas scikit-learn==1.6.1 joblib fastapi uvicorn openpyxl streamlit requests matplotlib pytest pytest-cov httpx)",
+      "Bash(python -m src.train)",
+      "Bash(python -c \":*)",
+      "Bash(python -m pytest tests/ -v --tb=short)",
+      "Bash(python -m pytest tests/test_api.py::TestPredictEndpoint::test_predict_minimum_fields -v --tb=long)",
+      "Bash(python -m pytest tests/test_api.py::TestPredictEndpoint::test_predict_minimum_fields -v --tb=short)",
+      "Bash(python -m pytest tests/ --cov=src --cov=app --cov-report=term-missing)"
+    ]
+  }
+}
