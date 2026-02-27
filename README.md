@@ -4,6 +4,8 @@ Sistema inteligente que identifica alunos em risco de defasagem escolar usando M
 
 **F1-Score: 0.990 (CV) | 0.996 (Holdout) | 88% cobertura de testes | 82 testes unitarios**
 
+**Demo ao vivo:** [https://datathon-main-pkxo7ltqnqul8zwbchb2ie.streamlit.app](https://datathon-main-pkxo7ltqnqul8zwbchb2ie.streamlit.app)
+
 ---
 
 ## 1. Visao Geral
@@ -165,7 +167,15 @@ A interface estara disponivel em: **http://localhost:8501**
 
 ---
 
-### Opcao B: Docker (Um Comando)
+### Opcao B: Deploy Cloud (Streamlit Cloud)
+
+A aplicacao esta disponivel online, sem necessidade de instalacao:
+
+**https://datathon-main-pkxo7ltqnqul8zwbchb2ie.streamlit.app**
+
+---
+
+### Opcao C: Docker (Um Comando)
 
 ```bash
 docker-compose up --build
@@ -182,7 +192,7 @@ docker-compose down
 
 ---
 
-### Opcao C: Apenas Treinar e Avaliar (Sem Servidor)
+### Opcao D: Apenas Treinar e Avaliar (Sem Servidor)
 
 ```bash
 # Instalar dependencias
